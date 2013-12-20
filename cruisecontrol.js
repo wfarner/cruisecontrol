@@ -19,7 +19,7 @@ function calculateAccelerationMpsSquared(controllerFn, curSpeedLimit, curSpeedMp
   var inputForceNewtons = 0;
   if (acceleratorPosition > 0) {
     // Engine engaged.
-    inputForceNewtons = maxEngineForceNewtons * acceleratorPosition;
+    inputForceNewtons = maxEngineForceNewtons * Math.min(1, acceleratorPosition);
   }
 
   return (inputForceNewtons - resistanceForceNewtons) / vehicleMassKg;
